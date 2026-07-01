@@ -20,10 +20,10 @@ export function Footer() {
   const { locale } = useLanguage()
 
   const support = [
-    { label: t('footer.contact'), href: '#' },
-    { label: t('footer.faq'), href: '#' },
-    { label: t('footer.shipping'), href: '#' },
-    { label: t('footer.returns'), href: '#' },
+    { label: t('footer.contact'), href: '/support' },
+    { label: t('footer.faq'), href: '/support' },
+    { label: t('footer.shipping'), href: '/support' },
+    { label: t('footer.returns'), href: '/support' },
   ]
   const company = [
     { label: t('footer.about'), href: '#' },

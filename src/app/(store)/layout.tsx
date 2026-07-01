@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 import { MobileDrawer } from '@/components/layout/MobileDrawer'
 import { CartSidebar } from '@/components/layout/CartSidebar'
 import { BottomNav } from '@/components/layout/BottomNav'
+import { AccountModal } from '@/components/layout/AccountModal'
 
 export default function StoreLayout({ children }: { children: ReactNode }) {
   return (
@@ -11,6 +12,7 @@ export default function StoreLayout({ children }: { children: ReactNode }) {
       <Header />
       <MobileDrawer />
       <CartSidebar />
+      <AccountModal />
       <main className="flex-1 pb-24 lg:pb-0">{children}</main>
       <Footer />
       <BottomNav />

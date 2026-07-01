@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Home, LayoutGrid, Tag, Heart, User } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageProvider'
 import { selectWishlistCount, useWishlistStore } from '@/store/wishlistStore'
+import { useUiStore } from '@/store/uiStore'
 import { useHydrated } from '@/lib/useHydrated'
 import { cn } from '@/lib/utils'
 
@@ -13,30 +14,30 @@ export function BottomNav() {
   const pathname = usePathname()
   const hydrated = useHydrated()
   const wishlistCount = useWishlistStore(selectWishlistCount)
+  const openAccount = useUiStore((s) => s.openAccount)
 
   if (pathname.startsWith('/admin')) return null
 
-  const items = [
+  const links = [
     { href: '/', label: t('nav.home'), icon: Home },
     { href: '/shop', label: t('nav.categories'), icon: LayoutGrid },
     { href: '/shop?sort=sale', label: t('nav.deals'), icon: Tag },
     { href: '/shop', label: t('nav.wishlist'), icon: Heart, badge: true },
-    { href: '/admin', label: t('nav.account'), icon: User },
   ]
+
+  const itemClass =
+    'relative flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition'
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-surface-muted bg-white/95 backdrop-blur lg:hidden">
       <div className="mx-auto flex max-w-md items-stretch justify-between px-2 pb-[env(safe-area-inset-bottom)]">
-        {items.map((item) => {
+        {links.map((item) => {
           const active = pathname === item.href
           return (
             <Link
               key={item.label}
               href={item.href}
-              className={cn(
-                'relative flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition',
-                active ? 'text-brand-600' : 'text-ink-muted'
-              )}
+              className={cn(itemClass, active ? 'text-brand-600' : 'text-ink-muted')}
             >
               <span className="relative">
                 <item.icon size={21} />
@@ -50,6 +51,15 @@ export function BottomNav() {
             </Link>
           )
         })}
+
+        <button
+          onClick={openAccount}
+          className={cn(itemClass, 'text-ink-muted')}
+          aria-label={t('nav.account')}
+        >
+          <User size={21} />
+          {t('nav.account')}
+        </button>
       </div>
     </nav>
   )

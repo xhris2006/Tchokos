@@ -10,12 +10,13 @@ import { cn } from '@/lib/utils'
 interface PromoProps {
   title: string
   desc: string
+  cta: string
   href: string
   image: string
   tone: 'amber' | 'blue'
 }
 
-function Promo({ title, desc, href, image, tone }: PromoProps) {
+function Promo({ title, desc, cta, href, image, tone }: PromoProps) {
   return (
     <Link
       href={href}
@@ -30,7 +31,7 @@ function Promo({ title, desc, href, image, tone }: PromoProps) {
         </h3>
         <p className="mt-2 text-sm text-white/90">{desc}</p>
         <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-xl bg-ink/85 px-4 py-2 text-sm font-semibold transition group-hover:bg-ink">
-          {tone === 'amber' ? 'Shop Now' : 'Shop Now'}
+          {cta}
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
@@ -66,6 +67,7 @@ export function PromoBanners() {
           <Promo
             title={t('home.summerCollection')}
             desc={t('home.summerDesc')}
+            cta={t('home.shopNow')}
             href="/shop?category=fashion"
             image="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
             tone="amber"
@@ -75,6 +77,7 @@ export function PromoBanners() {
           <Promo
             title={t('home.homeEssentials')}
             desc={t('home.homeEssentialsDesc')}
+            cta={t('home.shopNow')}
             href="/shop?category=home"
             image="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
             tone="blue"

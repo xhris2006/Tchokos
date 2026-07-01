@@ -87,10 +87,10 @@ export function ShopView() {
         </p>
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex gap-6">
         {/* Desktop sidebar */}
-        <aside className="hidden w-64 shrink-0 lg:block">
-          <div className="sticky top-28 rounded-2xl border border-surface-muted bg-white p-5">
+        <aside className="hidden w-56 shrink-0 lg:block">
+          <div className="sticky top-20 rounded-2xl border border-surface-muted bg-white p-4">
             <Filters value={filters} onChange={patch} />
           </div>
         </aside>
@@ -130,7 +130,11 @@ export function ShopView() {
         title={t('shop.filters')}
         className="max-h-[85vh] overflow-y-auto"
       >
-        <Filters value={filters} onChange={patch} />
+        <Filters
+          value={filters}
+          onChange={patch}
+          onCategorySelect={() => setMobileOpen(false)}
+        />
         <div className="sticky bottom-0 mt-5 flex gap-2 bg-white pt-3">
           <Button
             variant="outline"

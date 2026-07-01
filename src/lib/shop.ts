@@ -11,7 +11,7 @@ export interface ShopFilters {
   query: string
 }
 
-export const PRICE_CEILING = 1200
+export const PRICE_CEILING = 800000
 
 export const defaultFilters: ShopFilters = {
   category: 'all',

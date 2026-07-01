@@ -90,11 +90,11 @@ export function HeroBanner() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, type: 'spring' }}
-              className="absolute right-4 top-4 grid h-16 w-16 place-items-center rounded-full bg-accent text-center text-[11px] font-bold leading-tight text-white shadow-float"
+              className="absolute right-4 top-4 grid h-16 w-16 place-items-center rounded-full bg-accent text-center text-[11px] font-bold uppercase leading-tight text-white shadow-float"
             >
-              UP TO
+              {t('home.upTo')}
               <br />
-              60% OFF
+              -60%
             </motion.div>
           </motion.div>
         </div>

@@ -4,11 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { MoreHorizontal } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useLanguage } from '@/lib/i18n/LanguageProvider'
+import { useLanguage, useTranslation } from '@/lib/i18n/LanguageProvider'
 import { categories, localized } from '@/lib/mockData'
 
 export function CategoryScroll() {
   const { locale } = useLanguage()
+  const { t } = useTranslation()
 
   return (
     <section className="container-px pt-6">
@@ -48,7 +49,7 @@ export function CategoryScroll() {
             <MoreHorizontal size={22} />
           </span>
           <span className="text-center text-xs font-medium text-ink-soft group-hover:text-brand-700">
-            All
+            {t('common.all')}
           </span>
         </Link>
       </div>

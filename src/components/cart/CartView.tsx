@@ -18,10 +18,11 @@ import { QuantitySelector } from '@/components/ui/QuantitySelector'
 import { Button, buttonVariants } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 
-const FREE_SHIPPING_THRESHOLD = 49
-const SHIPPING_FEE = 4.99
+const FREE_SHIPPING_THRESHOLD = 50000
+const SHIPPING_FEE = 2500
 
 function Row({ item }: { item: CartItem }) {
+  const { t } = useTranslation()
   const updateQty = useCartStore((s) => s.updateQty)
   const remove = useCartStore((s) => s.remove)
 
@@ -75,7 +76,9 @@ function Row({ item }: { item: CartItem }) {
           <div className="text-right">
             <p className="font-bold text-ink">{formatPrice(item.price * item.quantity)}</p>
             {item.quantity > 1 && (
-              <p className="text-xs text-ink-muted">{formatPrice(item.price)} / u</p>
+              <p className="text-xs text-ink-muted">
+                {formatPrice(item.price)} / {t('common.perUnit')}
+              </p>
             )}
           </div>
         </div>

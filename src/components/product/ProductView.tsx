@@ -283,7 +283,7 @@ export function ProductView({ product }: { product: Product }) {
               </div>
               <div className="flex justify-between border-b border-surface-muted pb-2">
                 <dt className="text-ink-muted">{t('product.availability')}</dt>
-                <dd className="font-medium text-ink">{product.stock} pcs</dd>
+                <dd className="font-medium text-ink">{product.stock} {t('common.pieces')}</dd>
               </div>
             </dl>
           )}

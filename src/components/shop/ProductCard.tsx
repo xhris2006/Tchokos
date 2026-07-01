@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/lib/i18n/LanguageProvider'
-import { type Product } from '@/lib/mockData'
+import { useLanguage, useTranslation } from '@/lib/i18n/LanguageProvider'
+import { localized, type Product } from '@/lib/mockData'
 import { useCartStore } from '@/store/cartStore'
 import { useWishlistStore } from '@/store/wishlistStore'
 import { useToastStore } from '@/store/toastStore'
@@ -22,6 +22,7 @@ export function ProductCard({
   className?: string
 }) {
   const { t } = useTranslation()
+  const { locale } = useLanguage()
   const hydrated = useHydrated()
   const add = useCartStore((s) => s.add)
   const toggleWish = useWishlistStore((s) => s.toggle)
@@ -38,7 +39,7 @@ export function ProductCard({
       image: product.images[0],
       price: product.price,
       size: product.sizes[0],
-      color: product.colors[0]?.name.en,
+      color: product.colors[0] ? localized(product.colors[0].name, locale) : undefined,
     })
     notify(t('product.addedToCart'), 'cart')
   }
@@ -73,7 +74,7 @@ export function ProductCard({
             ) : product.badge === 'new' ? (
               <Badge tone="new">{t('common.new')}</Badge>
             ) : product.badge === 'bestseller' ? (
-              <Badge tone="bestseller">Top</Badge>
+              <Badge tone="bestseller">{t('common.top')}</Badge>
             ) : null}
           </div>
 

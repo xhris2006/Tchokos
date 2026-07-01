@@ -15,8 +15,8 @@ import { formatPrice, cn } from '@/lib/utils'
 
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="border-b border-surface-muted pb-5">
-      <h4 className="mb-3 text-sm font-semibold text-ink">{title}</h4>
+    <div className="border-b border-surface-muted pb-3.5 last:border-0 last:pb-0">
+      <h4 className="mb-2 text-[13px] font-semibold text-ink">{title}</h4>
       {children}
     </div>
   )
@@ -25,9 +25,11 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
 export function Filters({
   value,
   onChange,
+  onCategorySelect,
 }: {
   value: ShopFilters
   onChange: (patch: Partial<ShopFilters>) => void
+  onCategorySelect?: () => void
 }) {
   const { t } = useTranslation()
   const { locale } = useLanguage()
@@ -48,9 +50,9 @@ export function Filters({
     })
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3.5">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-ink">{t('shop.filters')}</h3>
+        <h3 className="text-sm font-bold text-ink">{t('shop.filters')}</h3>
         {active > 0 && (
           <button
             onClick={() => onChange(defaultFilters)}
@@ -69,9 +71,12 @@ export function Filters({
               return (
                 <button
                   key={c.slug}
-                  onClick={() => onChange({ category: c.slug })}
+                  onClick={() => {
+                    onChange({ category: c.slug })
+                    onCategorySelect?.()
+                  }}
                   className={cn(
-                    'flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-sm transition',
+                    'flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition',
                     checked
                       ? 'bg-brand-50 font-semibold text-brand-700'
                       : 'text-ink-soft hover:bg-surface-muted'
@@ -93,7 +98,7 @@ export function Filters({
           type="range"
           min={0}
           max={PRICE_CEILING}
-          step={10}
+          step={5000}
           value={value.maxPrice}
           onChange={(e) => onChange({ maxPrice: Number(e.target.value) })}
           className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-surface-muted accent-brand-600"

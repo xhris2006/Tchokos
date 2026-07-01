@@ -9,6 +9,7 @@ import {
   Tag,
   Heart,
   User,
+  LifeBuoy,
   X,
   ChevronRight,
 } from 'lucide-react'
@@ -26,6 +27,7 @@ export function MobileDrawer() {
   const { locale } = useLanguage()
   const open = useUiStore((s) => s.menuOpen)
   const close = useUiStore((s) => s.closeMenu)
+  const openAccount = useUiStore((s) => s.openAccount)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export function MobileDrawer() {
     { href: '/shop', label: t('nav.shop'), icon: LayoutGrid },
     { href: '/shop?sort=sale', label: t('nav.deals'), icon: Tag },
     { href: '/shop', label: t('nav.wishlist'), icon: Heart },
-    { href: '/admin', label: t('nav.admin'), icon: User },
+    { href: '/support', label: t('support.title'), icon: LifeBuoy },
   ]
 
   return (
@@ -84,6 +86,7 @@ export function MobileDrawer() {
                   <Link
                     key={link.label}
                     href={link.href}
+                    onClick={close}
                     className={cn(
                       'flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition',
                       active
@@ -107,6 +110,7 @@ export function MobileDrawer() {
                   <Link
                     key={c.id}
                     href={`/shop?category=${c.slug}`}
+                    onClick={close}
                     className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm text-ink-soft transition hover:bg-surface-muted"
                   >
                     {localized(c.name, locale)}
@@ -116,7 +120,14 @@ export function MobileDrawer() {
               </div>
             </div>
 
-            <div className="mt-auto border-t border-surface-muted p-4">
+            <div className="mt-auto space-y-3 border-t border-surface-muted p-4">
+              <button
+                onClick={openAccount}
+                className="flex w-full items-center gap-3 rounded-xl bg-surface-muted px-3 py-3 text-sm font-medium text-ink transition hover:bg-surface-soft"
+              >
+                <User size={18} />
+                {t('nav.account')}
+              </button>
               <LanguageSwitcher />
             </div>
           </motion.aside>

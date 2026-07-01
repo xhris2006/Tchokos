@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Heart, Menu, Search, ShoppingCart, User } from 'lucide-react'
@@ -31,11 +31,21 @@ export function Header() {
   const wishlistCount = useWishlistStore(selectWishlistCount)
   const openCart = useCartStore((s) => s.openCart)
   const openMenu = useUiStore((s) => s.openMenu)
+  const openAccount = useUiStore((s) => s.openAccount)
   const [query, setQuery] = useState('')
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 8)
+      // Hide when scrolling down (past a small threshold), reveal when scrolling up.
+      if (y > lastY.current && y > 140) setHidden(true)
+      else if (y < lastY.current) setHidden(false)
+      lastY.current = y
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -47,10 +57,14 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50">
+    <motion.header
+      className="sticky top-0 z-50"
+      animate={{ y: hidden ? '-100%' : 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       {/* Announcement bar */}
       <div className="bg-brand-600 text-white">
-        <div className="container-px flex h-9 items-center justify-center gap-2 text-center text-[13px] font-medium">
+        <div className="container-px flex h-8 items-center justify-center gap-2 text-center text-xs font-medium">
           <span className="truncate">{t('home.announce')}</span>
         </div>
       </div>
@@ -62,79 +76,79 @@ export function Header() {
           scrolled && 'shadow-soft'
         )}
       >
-        <div className="container-px flex h-16 items-center gap-3 sm:gap-5">
+        <div className="container-px flex h-14 items-center gap-3 sm:gap-4">
           <button
             onClick={openMenu}
             aria-label="Menu"
-            className="grid h-10 w-10 place-items-center rounded-xl text-ink transition hover:bg-surface-muted lg:hidden"
+            className="grid h-9 w-9 place-items-center rounded-xl text-ink transition hover:bg-surface-muted lg:hidden"
           >
-            <Menu size={22} />
+            <Menu size={20} />
           </button>
 
           <Logo />
 
           <form onSubmit={onSearch} className="relative hidden flex-1 md:block">
             <Search
-              size={18}
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted"
+              size={17}
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('common.search')}
-              className="h-11 w-full rounded-xl border border-surface-muted bg-surface-soft pl-11 pr-28 text-sm text-ink placeholder:text-ink-muted focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/15"
+              className="h-10 w-full rounded-xl border border-surface-muted bg-surface-soft pl-10 pr-24 text-[13px] text-ink placeholder:text-ink-muted focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/15"
             />
             <button
               type="submit"
-              className="btn absolute right-1.5 top-1.5 h-8 bg-brand-600 px-4 text-white hover:bg-brand-700"
+              className="btn absolute right-1.5 top-1.5 h-7 bg-brand-600 px-3.5 text-white hover:bg-brand-700"
             >
-              <Search size={16} />
+              <Search size={15} />
             </button>
           </form>
 
-          <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <div className="ml-auto flex items-center gap-1 sm:gap-1.5">
             <LanguageSwitcher className="hidden sm:inline-flex" />
 
-            <Link
-              href="/admin"
+            <button
+              onClick={openAccount}
               aria-label={t('nav.account')}
-              className="hidden h-10 w-10 place-items-center rounded-xl text-ink transition hover:bg-surface-muted sm:grid"
+              className="hidden h-9 w-9 place-items-center rounded-xl text-ink transition hover:bg-surface-muted sm:grid"
             >
-              <User size={20} />
-            </Link>
+              <User size={19} />
+            </button>
 
             <Link
               href="/shop"
               aria-label={t('nav.wishlist')}
-              className="relative grid h-10 w-10 place-items-center rounded-xl text-ink transition hover:bg-surface-muted"
+              className="relative grid h-9 w-9 place-items-center rounded-xl text-ink transition hover:bg-surface-muted"
             >
-              <Heart size={20} />
+              <Heart size={19} />
               {hydrated && <CountBadge count={wishlistCount} />}
             </Link>
 
             <button
               onClick={openCart}
               aria-label={t('nav.cart')}
-              className="relative grid h-10 w-10 place-items-center rounded-xl text-ink transition hover:bg-surface-muted"
+              className="relative grid h-9 w-9 place-items-center rounded-xl text-ink transition hover:bg-surface-muted"
             >
-              <ShoppingCart size={20} />
+              <ShoppingCart size={19} />
               {hydrated && <CountBadge count={cartCount} />}
             </button>
           </div>
         </div>
 
         {/* Mobile search row */}
-        <div className="container-px pb-3 md:hidden">
+        <div className="container-px pb-2.5 md:hidden">
           <form onSubmit={onSearch} className="relative">
             <Search
-              size={18}
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted"
+              size={17}
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('common.searchShort')}
-              className="h-11 w-full rounded-xl border border-surface-muted bg-surface-soft pl-11 pr-4 text-sm text-ink placeholder:text-ink-muted focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/15"
+              className="h-10 w-full rounded-xl border border-surface-muted bg-surface-soft pl-10 pr-4 text-[13px] text-ink placeholder:text-ink-muted focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/15"
             />
           </form>
         </div>
@@ -148,6 +162,6 @@ export function Header() {
         style={{ transformOrigin: 'left' }}
         transition={{ duration: 0.4 }}
       />
-    </header>
+    </motion.header>
   )
 }
