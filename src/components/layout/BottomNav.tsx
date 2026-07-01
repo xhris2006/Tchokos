@@ -1,0 +1,56 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Home, LayoutGrid, Tag, Heart, User } from 'lucide-react'
+import { useTranslation } from '@/lib/i18n/LanguageProvider'
+import { selectWishlistCount, useWishlistStore } from '@/store/wishlistStore'
+import { useHydrated } from '@/lib/useHydrated'
+import { cn } from '@/lib/utils'
+
+export function BottomNav() {
+  const { t } = useTranslation()
+  const pathname = usePathname()
+  const hydrated = useHydrated()
+  const wishlistCount = useWishlistStore(selectWishlistCount)
+
+  if (pathname.startsWith('/admin')) return null
+
+  const items = [
+    { href: '/', label: t('nav.home'), icon: Home },
+    { href: '/shop', label: t('nav.categories'), icon: LayoutGrid },
+    { href: '/shop?sort=sale', label: t('nav.deals'), icon: Tag },
+    { href: '/shop', label: t('nav.wishlist'), icon: Heart, badge: true },
+    { href: '/admin', label: t('nav.account'), icon: User },
+  ]
+
+  return (
+    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-surface-muted bg-white/95 backdrop-blur lg:hidden">
+      <div className="mx-auto flex max-w-md items-stretch justify-between px-2 pb-[env(safe-area-inset-bottom)]">
+        {items.map((item) => {
+          const active = pathname === item.href
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={cn(
+                'relative flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition',
+                active ? 'text-brand-600' : 'text-ink-muted'
+              )}
+            >
+              <span className="relative">
+                <item.icon size={21} />
+                {item.badge && hydrated && wishlistCount > 0 && (
+                  <span className="absolute -right-2 -top-1.5 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-600 px-1 text-[9px] font-bold text-white">
+                    {wishlistCount}
+                  </span>
+                )}
+              </span>
+              {item.label}
+            </Link>
+          )
+        })}
+      </div>
+    </nav>
+  )
+}
