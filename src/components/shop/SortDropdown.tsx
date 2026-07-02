@@ -40,7 +40,7 @@ export function SortDropdown({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="btn h-11 gap-2 border border-surface-muted bg-white px-4 text-ink hover:bg-surface-soft"
+        className="btn h-10 gap-2 border border-surface-muted bg-white px-4 text-[13px] text-ink hover:bg-surface-soft"
       >
         <ArrowUpDown size={16} className="text-ink-muted" />
         <span className="hidden text-ink-muted sm:inline">{t('shop.sortBy')}:</span>

@@ -80,7 +80,9 @@ export function ProductView({ product }: { product: Product }) {
       </nav>
 
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-        <ProductGallery images={product.images} alt={product.name} />
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <ProductGallery images={product.images} alt={product.name} />
+        </div>
 
         <div>
           <div className="flex items-center gap-2">
@@ -287,6 +289,20 @@ export function ProductView({ product }: { product: Product }) {
               </div>
             </dl>
           )}
+        </div>
+      </div>
+
+      {/* Mobile sticky buy bar — sits above the bottom nav */}
+      <div className="fixed inset-x-0 bottom-[calc(60px+env(safe-area-inset-bottom))] z-40 border-t border-surface-muted bg-white/95 px-4 py-2.5 backdrop-blur lg:hidden">
+        <div className="mx-auto flex max-w-md items-center gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-[11px] text-ink-muted">{product.name}</p>
+            <p className="text-base font-extrabold text-ink">{formatPrice(product.price)}</p>
+          </div>
+          <Button className="ml-auto flex-1 max-w-[220px]" onClick={addToCart}>
+            <ShoppingCart size={17} />
+            {t('common.addToCart')}
+          </Button>
         </div>
       </div>
     </div>

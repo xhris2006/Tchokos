@@ -5,6 +5,7 @@ import { MobileDrawer } from '@/components/layout/MobileDrawer'
 import { CartSidebar } from '@/components/layout/CartSidebar'
 import { BottomNav } from '@/components/layout/BottomNav'
 import { AccountModal } from '@/components/layout/AccountModal'
+import { ScrollToTop } from '@/components/layout/ScrollToTop'
 
 export default function StoreLayout({ children }: { children: ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export default function StoreLayout({ children }: { children: ReactNode }) {
       <main className="flex-1 pb-24 lg:pb-0">{children}</main>
       <Footer />
       <BottomNav />
+      <ScrollToTop />
     </div>
   )
 }

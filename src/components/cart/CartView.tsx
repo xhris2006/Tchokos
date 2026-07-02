@@ -13,13 +13,11 @@ import {
 } from '@/store/cartStore'
 import { useToastStore } from '@/store/toastStore'
 import { useHydrated } from '@/lib/useHydrated'
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '@/lib/shop'
 import { formatPrice } from '@/lib/utils'
 import { QuantitySelector } from '@/components/ui/QuantitySelector'
 import { Button, buttonVariants } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-
-const FREE_SHIPPING_THRESHOLD = 50000
-const SHIPPING_FEE = 2500
 
 function Row({ item }: { item: CartItem }) {
   const { t } = useTranslation()
@@ -216,11 +214,23 @@ export function CartView() {
               {t('cart.checkout')}
             </Button>
 
-            {subtotal < FREE_SHIPPING_THRESHOLD && (
-              <p className="mt-3 text-center text-xs text-ink-muted">
-                {formatPrice(FREE_SHIPPING_THRESHOLD - subtotal)} → {t('home.freeShipping')}
+            <div className="mt-4 space-y-1.5">
+              <p className="text-center text-xs font-medium text-ink-soft">
+                {subtotal < FREE_SHIPPING_THRESHOLD
+                  ? t('cart.freeShipProgress', {
+                      amount: formatPrice(FREE_SHIPPING_THRESHOLD - subtotal),
+                    })
+                  : t('cart.freeShipUnlocked')}
               </p>
-            )}
+              <div className="h-1.5 overflow-hidden rounded-full bg-surface-muted">
+                <div
+                  className="h-full rounded-full bg-success transition-all duration-500"
+                  style={{
+                    width: `${Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)}%`,
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </aside>
       </div>

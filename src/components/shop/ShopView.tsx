@@ -90,7 +90,7 @@ export function ShopView() {
       <div className="flex gap-6">
         {/* Desktop sidebar */}
         <aside className="hidden w-56 shrink-0 lg:block">
-          <div className="sticky top-20 rounded-2xl border border-surface-muted bg-white p-4">
+          <div className="sticky top-28 rounded-2xl border border-surface-muted bg-white p-4">
             <Filters value={filters} onChange={patch} />
           </div>
         </aside>

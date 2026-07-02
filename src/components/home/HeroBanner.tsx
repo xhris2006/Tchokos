@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, RotateCcw, ShieldCheck, Truck } from 'lucide-react'
+import { ArrowRight, RotateCcw, ShieldCheck, Star, Truck } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageProvider'
 import { buttonVariants } from '@/components/ui/Button'
 
@@ -55,15 +55,15 @@ export function HeroBanner() {
               </Link>
             </div>
 
-            <div className="mt-9 grid grid-cols-3 gap-3 border-t border-white/60 pt-6">
+            <div className="mt-9 grid grid-cols-1 gap-3 border-t border-white/60 pt-6 sm:grid-cols-3">
               {perks.map((perk) => (
-                <div key={perk.title} className="flex items-start gap-2.5">
+                <div key={perk.title} className="flex items-center gap-2.5 sm:items-start">
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white text-brand-600 shadow-soft">
                     <perk.icon size={17} />
                   </span>
                   <div className="min-w-0">
-                    <p className="truncate text-xs font-semibold text-ink">{perk.title}</p>
-                    <p className="truncate text-[11px] text-ink-muted">{perk.desc}</p>
+                    <p className="text-xs font-semibold text-ink">{perk.title}</p>
+                    <p className="text-[11px] leading-snug text-ink-muted">{perk.desc}</p>
                   </div>
                 </div>
               ))}
@@ -85,6 +85,7 @@ export function HeroBanner() {
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent" />
             </div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -95,6 +96,22 @@ export function HeroBanner() {
               {t('home.upTo')}
               <br />
               -60%
+            </motion.div>
+
+            {/* Floating social-proof card */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, type: 'spring', damping: 20 }}
+              className="absolute -bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white/95 py-2.5 pl-3 pr-4 shadow-float backdrop-blur"
+            >
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent/10">
+                <Star size={17} className="fill-accent text-accent" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-sm font-bold text-ink">4.9/5</p>
+                <p className="text-[11px] text-ink-muted">{t('home.socialProof')}</p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

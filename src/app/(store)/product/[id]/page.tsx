@@ -27,9 +27,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   if (!product) notFound()
 
   return (
-    <>
+    <div className="pb-16 lg:pb-0">
       <ProductView product={product} />
       <RelatedProducts product={product} />
-    </>
+    </div>
   )
 }

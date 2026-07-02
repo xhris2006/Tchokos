@@ -52,6 +52,7 @@ export function Modal({
             exit={{ y: 20, opacity: 0, scale: 0.98 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
           >
+            <div aria-hidden className="mx-auto mb-3 h-1 w-10 rounded-full bg-surface-muted sm:hidden" />
             <div className="mb-4 flex items-center justify-between">
               {title && <h3 className="text-lg font-semibold text-ink">{title}</h3>}
               <button

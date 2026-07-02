@@ -13,6 +13,10 @@ export interface ShopFilters {
 
 export const PRICE_CEILING = 800000
 
+/** Cart totals: free shipping above this subtotal, flat fee below. */
+export const FREE_SHIPPING_THRESHOLD = 50000
+export const SHIPPING_FEE = 2500
+
 export const defaultFilters: ShopFilters = {
   category: 'all',
   maxPrice: PRICE_CEILING,

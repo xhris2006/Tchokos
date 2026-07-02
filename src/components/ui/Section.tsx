@@ -41,18 +41,19 @@ export function SectionHeader({
   className?: string
 }) {
   return (
-    <div className={cn('flex items-end justify-between gap-4', className)}>
-      <h2 className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
+    <div className={cn('flex items-center justify-between gap-4', className)}>
+      <h2 className="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
+        <span aria-hidden className="h-5 w-1.5 shrink-0 rounded-full bg-brand-600 sm:h-6" />
         {title}
       </h2>
       {href && actionLabel && (
         <Link
           href={href}
-          className="group flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-600 transition hover:text-brand-700"
+          className="group flex shrink-0 items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1.5 text-[13px] font-semibold text-brand-700 transition hover:bg-brand-100"
         >
           {actionLabel}
           <ArrowRight
-            size={16}
+            size={15}
             className="transition-transform group-hover:translate-x-0.5"
           />
         </Link>

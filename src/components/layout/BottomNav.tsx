@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
 import { Home, LayoutGrid, Tag, Heart, User } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageProvider'
 import { selectWishlistCount, useWishlistStore } from '@/store/wishlistStore'
@@ -40,9 +41,16 @@ export function BottomNav() {
               className={cn(itemClass, active ? 'text-brand-600' : 'text-ink-muted')}
             >
               <span className="relative">
-                <item.icon size={21} />
+                {active && (
+                  <motion.span
+                    layoutId="bottomnav-pill"
+                    className="absolute -inset-x-3.5 -inset-y-1 rounded-full bg-brand-50"
+                    transition={{ type: 'spring', damping: 26, stiffness: 320 }}
+                  />
+                )}
+                <item.icon size={21} className="relative z-10" />
                 {item.badge && hydrated && wishlistCount > 0 && (
-                  <span className="absolute -right-2 -top-1.5 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-600 px-1 text-[9px] font-bold text-white">
+                  <span className="absolute -right-2 -top-1.5 z-10 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-600 px-1 text-[9px] font-bold text-white">
                     {wishlistCount}
                   </span>
                 )}

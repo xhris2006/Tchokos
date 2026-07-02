@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
@@ -111,10 +112,19 @@ export function MobileDrawer() {
                     key={c.id}
                     href={`/shop?category=${c.slug}`}
                     onClick={close}
-                    className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm text-ink-soft transition hover:bg-surface-muted"
+                    className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-ink-soft transition hover:bg-surface-muted"
                   >
+                    <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-surface-muted">
+                      <Image
+                        src={c.image}
+                        alt=""
+                        fill
+                        sizes="36px"
+                        className="object-cover"
+                      />
+                    </span>
                     {localized(c.name, locale)}
-                    <ChevronRight size={16} className="text-ink-muted" />
+                    <ChevronRight size={16} className="ml-auto text-ink-muted" />
                   </Link>
                 ))}
               </div>

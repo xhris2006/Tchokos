@@ -84,6 +84,7 @@ export const dictionaries = {
       homeEssentials: 'Essentiels maison',
       homeEssentialsDesc: 'Jusqu’à -40% sur la maison & cuisine',
       testimonialTitle: 'Ils nous font confiance',
+      socialProof: '12 000+ avis clients vérifiés',
       newsletterTitle: 'Offres exclusives & nouveautés',
       newsletterDesc:
         'Inscrivez-vous à la newsletter et économisez sur vos produits favoris.',
@@ -137,6 +138,8 @@ export const dictionaries = {
       taxesNote: 'Calculées à la commande',
       promoPlaceholder: 'Code promo',
       applyPromo: 'Appliquer',
+      freeShipProgress: 'Plus que {amount} pour la livraison offerte',
+      freeShipUnlocked: 'Livraison offerte débloquée 🎉',
     },
     admin: {
       dashboard: 'Tableau de bord',
@@ -305,6 +308,7 @@ export const dictionaries = {
       homeEssentials: 'Home essentials',
       homeEssentialsDesc: 'Up to 40% off on home & kitchen',
       testimonialTitle: 'Trusted by shoppers',
+      socialProof: '12,000+ verified customer reviews',
       newsletterTitle: 'Exclusive offers & updates',
       newsletterDesc:
         'Join our newsletter and save more on your favorite products.',
@@ -358,6 +362,8 @@ export const dictionaries = {
       taxesNote: 'Calculated at checkout',
       promoPlaceholder: 'Promo code',
       applyPromo: 'Apply',
+      freeShipProgress: 'Only {amount} away from free shipping',
+      freeShipUnlocked: 'Free shipping unlocked 🎉',
     },
     admin: {
       dashboard: 'Dashboard',

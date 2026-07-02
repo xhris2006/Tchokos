@@ -3,6 +3,7 @@ import { CategoryScroll } from '@/components/home/CategoryScroll'
 import { FlashDeals } from '@/components/home/FlashDeals'
 import { PopularCategories } from '@/components/home/PopularCategories'
 import { FeaturedProducts } from '@/components/home/FeaturedProducts'
+import { BrandStrip } from '@/components/home/BrandStrip'
 import { PromoBanners } from '@/components/home/PromoBanners'
 import { BestSellers } from '@/components/home/BestSellers'
 import { Testimonials } from '@/components/home/Testimonials'
@@ -16,6 +17,7 @@ export default function HomePage() {
       <FlashDeals />
       <PopularCategories />
       <FeaturedProducts />
+      <BrandStrip />
       <PromoBanners />
       <BestSellers />
       <Testimonials />

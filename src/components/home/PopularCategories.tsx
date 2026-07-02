@@ -17,8 +17,8 @@ export function PopularCategories() {
         href="/shop"
         actionLabel={t('common.viewAll')}
       />
-      <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-4">
-        {categories.slice(0, 4).map((c, i) => (
+      <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-4">
+        {categories.map((c, i) => (
           <Reveal key={c.id} delay={i * 0.06}>
             <Link
               href={`/shop?category=${c.slug}`}

@@ -95,21 +95,29 @@ export function Footer() {
       </div>
 
       <div className="border-t border-surface-muted">
-        <div className="container-px flex flex-col items-center gap-4 py-4 text-sm text-ink-muted sm:flex-row sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {t('common.brandFull')}. {t('footer.rights')}
-          </p>
-          <div className="flex items-center gap-4 text-xs">
+        <div className="container-px flex flex-col items-center gap-3 py-4 text-xs text-ink-muted sm:flex-row sm:justify-between">
+          <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <Truck size={15} /> {t('home.freeShipping')}
             </span>
             <span className="flex items-center gap-1.5">
               <ShieldCheck size={15} /> {t('home.securePay')}
             </span>
-            <span className="flex items-center gap-1.5">
-              <CreditCard size={15} /> Visa · Mastercard
-            </span>
           </div>
+          <div className="flex items-center gap-1.5">
+            <CreditCard size={15} className="mr-1" />
+            {['Visa', 'Mastercard', 'Orange Money', 'MTN MoMo'].map((m) => (
+              <span
+                key={m}
+                className="rounded-md border border-surface-muted bg-surface-soft px-2 py-1 text-[10px] font-semibold text-ink-soft"
+              >
+                {m}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="container-px border-t border-surface-muted py-4 text-center text-xs text-ink-muted">
+          © {new Date().getFullYear()} {t('common.brandFull')}. {t('footer.rights')}
         </div>
       </div>
     </footer>

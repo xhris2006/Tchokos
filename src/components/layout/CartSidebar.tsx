@@ -12,6 +12,7 @@ import {
   type CartItem,
 } from '@/store/cartStore'
 import { useHydrated } from '@/lib/useHydrated'
+import { FREE_SHIPPING_THRESHOLD } from '@/lib/shop'
 import { formatPrice } from '@/lib/utils'
 import { QuantitySelector } from '@/components/ui/QuantitySelector'
 import { Button, buttonVariants } from '@/components/ui/Button'
@@ -134,6 +135,23 @@ export function CartSidebar() {
                   ))}
                 </div>
                 <div className="space-y-3 border-t border-surface-muted p-4">
+                  <div className="space-y-1.5">
+                    <p className="text-xs font-medium text-ink-soft">
+                      {subtotal < FREE_SHIPPING_THRESHOLD
+                        ? t('cart.freeShipProgress', {
+                            amount: formatPrice(FREE_SHIPPING_THRESHOLD - subtotal),
+                          })
+                        : t('cart.freeShipUnlocked')}
+                    </p>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-surface-muted">
+                      <div
+                        className="h-full rounded-full bg-success transition-all duration-500"
+                        style={{
+                          width: `${Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-ink-soft">{t('common.subtotal')}</span>
                     <span className="text-lg font-bold text-ink">

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageProvider'
-import { Reveal, SectionHeader } from '@/components/ui/Section'
+import { Reveal } from '@/components/ui/Section'
 import { cn } from '@/lib/utils'
 
 interface PromoProps {
@@ -61,8 +61,7 @@ export function PromoBanners() {
 
   return (
     <section className="container-px pt-10">
-      <SectionHeader title={t('home.trustedBrands')} />
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         <Reveal>
           <Promo
             title={t('home.summerCollection')}

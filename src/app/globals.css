@@ -24,6 +24,43 @@
   ::selection {
     @apply bg-brand-600 text-white;
   }
+
+  /* Thin, unobtrusive scrollbars (desktop) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-muted/40;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-muted/60;
+  }
+
+  /* Price range slider thumb */
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2.5px solid #1e3a8a;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
+    cursor: pointer;
+  }
+  input[type='range']::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2.5px solid #1e3a8a;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
+    cursor: pointer;
+  }
 }
 
 @layer components {
@@ -69,5 +106,9 @@
   .mask-fade-r {
     -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
     mask-image: linear-gradient(to right, black 85%, transparent);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   }
 }

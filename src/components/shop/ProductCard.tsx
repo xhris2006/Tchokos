@@ -94,7 +94,7 @@ export function ProductCard({
 
           <button
             onClick={quickAdd}
-            className="btn absolute bottom-2.5 right-2.5 h-9 w-9 translate-y-2 bg-brand-600 p-0 text-white opacity-0 shadow-soft transition-all duration-300 hover:bg-brand-700 group-hover:translate-y-0 group-hover:opacity-100"
+            className="btn absolute bottom-2.5 right-2.5 h-9 w-9 bg-brand-600 p-0 text-white shadow-soft transition-all duration-300 hover:bg-brand-700 active:scale-90 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
             aria-label={t('common.addToCart')}
           >
             <ShoppingCart size={16} />
@@ -111,12 +111,12 @@ export function ProductCard({
           <div className="mt-1.5">
             <Rating value={product.rating} reviews={product.reviews} />
           </div>
-          <div className="mt-auto flex items-end gap-2 pt-3">
-            <span className="text-base font-bold text-ink">
+          <div className="mt-auto flex flex-wrap items-baseline gap-x-2 gap-y-0.5 pt-3">
+            <span className="whitespace-nowrap text-base font-bold text-ink">
               {formatPrice(product.price)}
             </span>
             {product.compareAt && (
-              <span className="text-sm text-ink-muted line-through">
+              <span className="whitespace-nowrap text-xs text-ink-muted line-through">
                 {formatPrice(product.compareAt)}
               </span>
             )}
