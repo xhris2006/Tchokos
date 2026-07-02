@@ -16,12 +16,12 @@ export default function NotFound() {
       <motion.p
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="font-display text-7xl font-extrabold text-brand-600"
+        className="font-display text-6xl font-extrabold text-brand-600"
       >
         404
       </motion.p>
       <div>
-        <h1 className="font-display text-2xl font-bold text-ink">{t('notFound.title')}</h1>
+        <h1 className="font-display text-xl font-bold text-ink">{t('notFound.title')}</h1>
         <p className="mt-2 max-w-sm text-sm text-ink-muted">{t('notFound.desc')}</p>
       </div>
       <div className="flex flex-wrap justify-center gap-3">

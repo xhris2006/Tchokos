@@ -9,12 +9,12 @@ export function SalesChart() {
   const max = Math.max(...salesByMonth.map((d) => d.value))
 
   return (
-    <div className="rounded-2xl border border-surface-muted bg-white p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-semibold text-ink">{t('admin.salesOverview')}</h3>
+    <div className="rounded-2xl border border-surface-muted bg-white p-4">
+      <div className="mb-3 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-ink">{t('admin.salesOverview')}</h3>
         <span className="text-xs font-medium text-ink-muted">2026</span>
       </div>
-      <div className="flex h-48 items-end gap-1.5 sm:gap-2.5">
+      <div className="flex h-40 gap-1.5 sm:gap-2.5">
         {salesByMonth.map((d, i) => (
           <div key={d.month} className="flex flex-1 flex-col items-center gap-2">
             <div className="flex w-full flex-1 items-end">

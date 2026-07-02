@@ -78,7 +78,7 @@ export function ShopView() {
   return (
     <div className="container-px py-6">
       <div className="mb-5">
-        <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+        <h1 className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
           {t('shop.title')}
         </h1>
         <p className="mt-1 text-sm text-ink-muted">

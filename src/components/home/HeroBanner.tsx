@@ -34,12 +34,12 @@ export function HeroBanner() {
             <p className="text-sm font-semibold uppercase tracking-wide text-accent">
               {t('home.heroKicker')}
             </p>
-            <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            <h1 className="mt-3 font-display text-2xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-4xl">
               {t('home.heroTitle1')}
               <br />
               <span className="text-brand-600">{t('home.heroTitle2')}</span>
             </h1>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
               {t('home.heroText')}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -48,7 +48,7 @@ export function HeroBanner() {
                 <ArrowRight size={18} />
               </Link>
               <Link
-                href="/shop?sort=sale"
+                href="/deals"
                 className={buttonVariants({ variant: 'outline', size: 'lg' })}
               >
                 {t('home.exploreDeals')}

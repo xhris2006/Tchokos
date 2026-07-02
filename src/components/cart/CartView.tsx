@@ -108,7 +108,7 @@ export function CartView() {
           <ShoppingBag size={34} />
         </span>
         <div>
-          <h1 className="font-display text-2xl font-bold text-ink">{t('cart.empty')}</h1>
+          <h1 className="font-display text-xl font-bold text-ink">{t('cart.empty')}</h1>
           <p className="mt-2 max-w-sm text-sm text-ink-muted">{t('cart.emptyDesc')}</p>
         </div>
         <Link href="/shop" className={buttonVariants({ size: 'lg' })}>
@@ -121,9 +121,9 @@ export function CartView() {
 
   return (
     <div className="container-px py-6">
-      <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      <h1 className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
         {t('cart.title')}
-        <span className="ml-2 text-lg font-normal text-ink-muted">
+        <span className="ml-2 text-sm font-normal text-ink-muted">
           ({items.length} {t('cart.items')})
         </span>
       </h1>
@@ -157,7 +157,7 @@ export function CartView() {
         {/* Summary */}
         <aside className="h-fit lg:sticky lg:top-28">
           <div className="rounded-2xl border border-surface-muted bg-white p-6">
-            <h2 className="text-lg font-bold text-ink">{t('cart.orderSummary')}</h2>
+            <h2 className="text-base font-bold text-ink">{t('cart.orderSummary')}</h2>
 
             <div className="mt-4 flex gap-2">
               <div className="relative flex-1">
@@ -201,7 +201,7 @@ export function CartView() {
               </div>
               <div className="flex items-center justify-between border-t border-surface-muted pt-3">
                 <span className="font-semibold text-ink">{t('common.total')}</span>
-                <span className="text-xl font-extrabold text-ink">{formatPrice(total)}</span>
+                <span className="text-lg font-extrabold text-ink">{formatPrice(total)}</span>
               </div>
             </div>
 

@@ -42,8 +42,8 @@ export function SectionHeader({
 }) {
   return (
     <div className={cn('flex items-center justify-between gap-4', className)}>
-      <h2 className="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
-        <span aria-hidden className="h-5 w-1.5 shrink-0 rounded-full bg-brand-600 sm:h-6" />
+      <h2 className="flex items-center gap-2.5 font-display text-base font-bold tracking-tight text-ink sm:text-lg">
+        <span aria-hidden className="h-4 w-1.5 shrink-0 rounded-full bg-brand-600 sm:h-5" />
         {title}
       </h2>
       {href && actionLabel && (

@@ -110,44 +110,44 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
       <div className="lg:pl-64">
         {/* Topbar */}
-        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-surface-muted bg-white/90 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-surface-muted bg-white/90 px-4 backdrop-blur sm:px-6">
           <button
             onClick={() => setOpen(true)}
-            className="grid h-10 w-10 place-items-center rounded-xl text-ink hover:bg-surface-muted lg:hidden"
+            className="grid h-9 w-9 place-items-center rounded-xl text-ink hover:bg-surface-muted lg:hidden"
             aria-label="Menu"
           >
-            <Menu size={22} />
+            <Menu size={20} />
           </button>
 
-          <h1 className="text-lg font-bold text-ink">{t('admin.dashboard')}</h1>
+          <h1 className="text-base font-bold text-ink">{t('admin.dashboard')}</h1>
 
           <div className="relative ml-auto hidden md:block">
             <Search
-              size={16}
+              size={15}
               className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               placeholder={t('admin.search')}
-              className="h-10 w-56 rounded-xl border border-surface-muted bg-surface-soft pl-9 pr-3 text-sm focus:border-brand-400 focus:bg-white focus:outline-none"
+              className="h-9 w-56 rounded-xl border border-surface-muted bg-surface-soft pl-9 pr-3 text-[13px] focus:border-brand-400 focus:bg-white focus:outline-none"
             />
           </div>
 
           <LanguageSwitcher className="ml-auto md:ml-0" />
 
           <button
-            className="relative grid h-10 w-10 place-items-center rounded-xl text-ink hover:bg-surface-muted"
+            className="relative grid h-9 w-9 place-items-center rounded-xl text-ink hover:bg-surface-muted"
             aria-label="Notifications"
           >
-            <Bell size={19} />
+            <Bell size={18} />
             <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger" />
           </button>
 
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-600 text-sm font-bold text-white">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-600 text-[13px] font-bold text-white">
             T
           </span>
         </header>
 
-        <main className="p-4 sm:p-6">{children}</main>
+        <main className="p-4 sm:p-5">{children}</main>
       </div>
     </div>
   )

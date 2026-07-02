@@ -46,8 +46,8 @@ export function MobileDrawer() {
   const links = [
     { href: '/', label: t('nav.home'), icon: Home },
     { href: '/shop', label: t('nav.shop'), icon: LayoutGrid },
-    { href: '/shop?sort=sale', label: t('nav.deals'), icon: Tag },
-    { href: '/shop', label: t('nav.wishlist'), icon: Heart },
+    { href: '/deals', label: t('nav.deals'), icon: Tag },
+    { href: '/wishlist', label: t('nav.wishlist'), icon: Heart },
     { href: '/support', label: t('support.title'), icon: LifeBuoy },
   ]
 

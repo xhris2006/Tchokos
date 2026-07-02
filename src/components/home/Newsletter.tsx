@@ -30,7 +30,7 @@ export function Newsletter() {
               <Mail size={22} />
             </span>
             <div>
-              <h2 className="font-display text-xl font-bold text-white sm:text-2xl">
+              <h2 className="font-display text-lg font-bold text-white sm:text-xl">
                 {t('home.newsletterTitle')}
               </h2>
               <p className="mt-1.5 max-w-md text-sm text-white/70">

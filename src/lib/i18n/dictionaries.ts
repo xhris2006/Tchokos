@@ -197,6 +197,19 @@ export const dictionaries = {
       desc: 'La page que vous cherchez n’existe pas ou a été déplacée.',
       back: 'Retour à l’accueil',
     },
+    wishlist: {
+      title: 'Mes favoris',
+      empty: 'Aucun favori pour le moment',
+      emptyDesc: 'Touchez le cœur sur un produit pour le retrouver ici.',
+      clear: 'Tout retirer',
+      items: 'articles enregistrés',
+    },
+    deals: {
+      title: 'Offres & Promos',
+      subtitle: 'Les meilleures réductions du moment — stocks limités !',
+      upTo: 'Jusqu’à -{percent}%',
+      count: '{count} offres en cours',
+    },
     account: {
       title: 'Se connecter ou s’inscrire',
       subtitle: 'Accédez à votre compte Tchokos',
@@ -420,6 +433,19 @@ export const dictionaries = {
       title: 'Page not found',
       desc: 'The page you are looking for does not exist or has moved.',
       back: 'Back to home',
+    },
+    wishlist: {
+      title: 'My wishlist',
+      empty: 'No favorites yet',
+      emptyDesc: 'Tap the heart on any product to save it here.',
+      clear: 'Remove all',
+      items: 'saved items',
+    },
+    deals: {
+      title: 'Deals & Offers',
+      subtitle: 'The best discounts right now — limited stock!',
+      upTo: 'Up to -{percent}%',
+      count: '{count} active deals',
     },
     account: {
       title: 'Sign in or sign up',

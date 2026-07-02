@@ -40,7 +40,7 @@ export function Testimonials() {
           >
             <Quote size={36} className="shrink-0 text-brand-200" />
             <div className="flex-1">
-              <p className="text-base font-medium leading-relaxed text-ink sm:text-lg">
+              <p className="text-sm font-medium leading-relaxed text-ink sm:text-base">
                 “{localized(item.quote, locale)}”
               </p>
               <div className="mt-4 flex items-center gap-3">

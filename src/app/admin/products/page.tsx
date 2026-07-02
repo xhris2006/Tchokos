@@ -21,8 +21,8 @@ export default function AdminProductsPage() {
     <div className="space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-xl font-bold text-ink">{t('admin.products')}</h2>
-          <p className="text-sm text-ink-muted">{products.length} {t('common.results')}</p>
+          <h2 className="text-lg font-bold text-ink">{t('admin.products')}</h2>
+          <p className="text-xs text-ink-muted">{products.length} {t('common.results')}</p>
         </div>
         <div className="flex gap-2">
           <div className="relative flex-1 sm:w-56">
@@ -34,7 +34,7 @@ export default function AdminProductsPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('admin.search')}
-              className="h-11 w-full rounded-xl border border-surface-muted bg-white pl-9 pr-3 text-sm focus:border-brand-400 focus:outline-none"
+              className="h-10 w-full rounded-xl border border-surface-muted bg-white pl-9 pr-3 text-sm focus:border-brand-400 focus:outline-none"
             />
           </div>
           <Button>
@@ -46,21 +46,21 @@ export default function AdminProductsPage() {
 
       <div className="overflow-hidden rounded-2xl border border-surface-muted bg-white">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-[13px]">
             <thead>
-              <tr className="border-b border-surface-muted text-left text-xs uppercase tracking-wide text-ink-muted">
-                <th className="px-5 py-3 font-semibold">{t('admin.name')}</th>
-                <th className="hidden px-5 py-3 font-semibold md:table-cell">{t('shop.category')}</th>
-                <th className="px-5 py-3 font-semibold">{t('shop.price')}</th>
-                <th className="hidden px-5 py-3 font-semibold sm:table-cell">{t('admin.stock')}</th>
-                <th className="px-5 py-3 font-semibold">{t('admin.status')}</th>
-                <th className="px-5 py-3 text-right font-semibold">{t('admin.actions')}</th>
+              <tr className="border-b border-surface-muted text-left text-[11px] uppercase tracking-wide text-ink-muted">
+                <th className="px-4 py-2.5 font-semibold">{t('admin.name')}</th>
+                <th className="hidden px-4 py-2.5 font-semibold md:table-cell">{t('shop.category')}</th>
+                <th className="px-4 py-2.5 font-semibold">{t('shop.price')}</th>
+                <th className="hidden px-4 py-2.5 font-semibold sm:table-cell">{t('admin.stock')}</th>
+                <th className="px-4 py-2.5 font-semibold">{t('admin.status')}</th>
+                <th className="px-4 py-2.5 text-right font-semibold">{t('admin.actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-muted">
               {list.map((p) => (
                 <tr key={p.id} className="transition hover:bg-surface-soft">
-                  <td className="px-5 py-3">
+                  <td className="px-4 py-2.5">
                     <div className="flex items-center gap-3">
                       <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-surface-muted">
                         <Image src={p.images[0]} alt={p.name} fill sizes="40px" className="object-cover" />
@@ -71,11 +71,11 @@ export default function AdminProductsPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="hidden px-5 py-3 text-ink-soft md:table-cell">
+                  <td className="hidden px-4 py-2.5 text-ink-soft md:table-cell">
                     {categoryName(p.category, locale)}
                   </td>
-                  <td className="px-5 py-3 font-semibold text-ink">{formatPrice(p.price)}</td>
-                  <td className="hidden px-5 py-3 sm:table-cell">
+                  <td className="whitespace-nowrap px-4 py-2.5 font-semibold text-ink">{formatPrice(p.price)}</td>
+                  <td className="hidden px-4 py-2.5 sm:table-cell">
                     <span
                       className={cn(
                         'font-medium',
@@ -85,7 +85,7 @@ export default function AdminProductsPage() {
                       {p.stock}
                     </span>
                   </td>
-                  <td className="px-5 py-3">
+                  <td className="px-4 py-2.5">
                     <span
                       className={cn(
                         'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold',
@@ -96,7 +96,7 @@ export default function AdminProductsPage() {
                       {p.stock > 0 ? t('admin.published') : t('admin.draft')}
                     </span>
                   </td>
-                  <td className="px-5 py-3">
+                  <td className="px-4 py-2.5">
                     <div className="flex items-center justify-end gap-1">
                       <button className="grid h-8 w-8 place-items-center rounded-lg text-ink-muted transition hover:bg-surface-muted hover:text-brand-700">
                         <Pencil size={15} />

@@ -43,7 +43,7 @@ export default function SupportPage() {
           <LifeBuoy size={22} />
         </span>
         <div>
-          <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h1 className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
             {t('support.title')}
           </h1>
           <p className="mt-1 text-sm text-ink-muted">{t('support.subtitle')}</p>
@@ -56,7 +56,7 @@ export default function SupportPage() {
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
             <Mail size={19} />
           </span>
-          <h2 className="mt-4 text-lg font-bold text-ink">{t('support.contactTitle')}</h2>
+          <h2 className="mt-4 text-base font-bold text-ink">{t('support.contactTitle')}</h2>
           <p className="mt-1 flex-1 text-sm text-ink-soft">{t('support.contactDesc')}</p>
           <a
             href="mailto:support@tchokos.com"
@@ -75,7 +75,7 @@ export default function SupportPage() {
             </span>
             <SoonBadge />
           </div>
-          <h2 className="mt-4 text-lg font-bold text-ink">{t('support.groupTitle')}</h2>
+          <h2 className="mt-4 text-base font-bold text-ink">{t('support.groupTitle')}</h2>
           <p className="mt-1 flex-1 text-sm text-ink-soft">{t('support.groupDesc')}</p>
           <button
             onClick={() => notify(t('support.soon'), 'check')}
@@ -89,7 +89,7 @@ export default function SupportPage() {
 
       {/* FAQ */}
       <div className="mt-8">
-        <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+        <h2 className="font-display text-lg font-bold tracking-tight text-ink">
           {t('support.faqTitle')}
         </h2>
         <div className="mt-4 space-y-2.5">

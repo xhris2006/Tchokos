@@ -37,7 +37,7 @@ export default function AdminOverviewPage() {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         {adminStats.map((stat, i) => (
           <StatCard
             key={stat.key}
@@ -51,24 +51,24 @@ export default function AdminOverviewPage() {
       </div>
 
       {/* Chart + top products */}
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <SalesChart />
         </div>
 
-        <div className="rounded-2xl border border-surface-muted bg-white p-5">
-          <h3 className="mb-4 font-semibold text-ink">{t('admin.topProducts')}</h3>
-          <div className="space-y-3">
+        <div className="rounded-2xl border border-surface-muted bg-white p-4">
+          <h3 className="mb-3 text-sm font-semibold text-ink">{t('admin.topProducts')}</h3>
+          <div className="space-y-2.5">
             {topProducts.map((p) => (
-              <div key={p.id} className="flex items-center gap-3">
-                <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-surface-muted">
-                  <Image src={p.images[0]} alt={p.name} fill sizes="44px" className="object-cover" />
+              <div key={p.id} className="flex items-center gap-2.5">
+                <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-surface-muted">
+                  <Image src={p.images[0]} alt={p.name} fill sizes="36px" className="object-cover" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-ink">{p.name}</p>
-                  <p className="text-xs text-ink-muted">{categoryName(p.category, locale)}</p>
+                  <p className="truncate text-[13px] font-medium text-ink">{p.name}</p>
+                  <p className="text-[11px] text-ink-muted">{categoryName(p.category, locale)}</p>
                 </div>
-                <span className="text-sm font-semibold text-ink">{formatPrice(p.price)}</span>
+                <span className="whitespace-nowrap text-xs font-semibold text-ink">{formatPrice(p.price)}</span>
               </div>
             ))}
           </div>
@@ -77,31 +77,31 @@ export default function AdminOverviewPage() {
 
       {/* Recent orders */}
       <div className="rounded-2xl border border-surface-muted bg-white">
-        <div className="flex items-center justify-between border-b border-surface-muted px-5 py-4">
-          <h3 className="font-semibold text-ink">{t('admin.recentOrders')}</h3>
+        <div className="flex items-center justify-between border-b border-surface-muted px-4 py-3">
+          <h3 className="text-sm font-semibold text-ink">{t('admin.recentOrders')}</h3>
           <span className="text-xs font-medium text-ink-muted">{mockOrders.length}</span>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-[13px]">
             <thead>
-              <tr className="border-b border-surface-muted text-left text-xs uppercase tracking-wide text-ink-muted">
-                <th className="px-5 py-3 font-semibold">ID</th>
-                <th className="px-5 py-3 font-semibold">{t('admin.customer')}</th>
-                <th className="hidden px-5 py-3 font-semibold sm:table-cell">{t('admin.date')}</th>
-                <th className="px-5 py-3 font-semibold">{t('admin.status')}</th>
-                <th className="px-5 py-3 text-right font-semibold">{t('admin.amount')}</th>
+              <tr className="border-b border-surface-muted text-left text-[11px] uppercase tracking-wide text-ink-muted">
+                <th className="px-4 py-2.5 font-semibold">ID</th>
+                <th className="px-4 py-2.5 font-semibold">{t('admin.customer')}</th>
+                <th className="hidden px-4 py-2.5 font-semibold sm:table-cell">{t('admin.date')}</th>
+                <th className="px-4 py-2.5 font-semibold">{t('admin.status')}</th>
+                <th className="px-4 py-2.5 text-right font-semibold">{t('admin.amount')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-muted">
               {recent.map((o) => (
                 <tr key={o.id} className="transition hover:bg-surface-soft">
-                  <td className="px-5 py-3 font-medium text-ink">{o.id}</td>
-                  <td className="px-5 py-3 text-ink-soft">{o.customer}</td>
-                  <td className="hidden px-5 py-3 text-ink-muted sm:table-cell">{o.date}</td>
-                  <td className="px-5 py-3">
+                  <td className="px-4 py-2.5 font-medium text-ink">{o.id}</td>
+                  <td className="px-4 py-2.5 text-ink-soft">{o.customer}</td>
+                  <td className="hidden px-4 py-2.5 text-ink-muted sm:table-cell">{o.date}</td>
+                  <td className="px-4 py-2.5">
                     <StatusBadge status={o.status} />
                   </td>
-                  <td className="px-5 py-3 text-right font-semibold text-ink">
+                  <td className="whitespace-nowrap px-4 py-2.5 text-right font-semibold text-ink">
                     {formatPrice(o.amount)}
                   </td>
                 </tr>

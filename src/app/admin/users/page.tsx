@@ -25,33 +25,33 @@ export default function AdminUsersPage() {
     <div className="space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-xl font-bold text-ink">{t('admin.users')}</h2>
-          <p className="text-sm text-ink-muted">{mockUsers.length} {t('common.results')}</p>
+          <h2 className="text-lg font-bold text-ink">{t('admin.users')}</h2>
+          <p className="text-xs text-ink-muted">{mockUsers.length} {t('common.results')}</p>
         </div>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t('admin.search')}
-          className="h-11 rounded-xl border border-surface-muted bg-white px-4 text-sm focus:border-brand-400 focus:outline-none sm:w-56"
+          className="h-10 rounded-xl border border-surface-muted bg-white px-4 text-sm focus:border-brand-400 focus:outline-none sm:w-56"
         />
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-surface-muted bg-white">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-[13px]">
             <thead>
-              <tr className="border-b border-surface-muted text-left text-xs uppercase tracking-wide text-ink-muted">
-                <th className="px-5 py-3 font-semibold">{t('admin.name')}</th>
-                <th className="hidden px-5 py-3 font-semibold md:table-cell">{t('admin.role')}</th>
-                <th className="hidden px-5 py-3 font-semibold sm:table-cell">{t('admin.joined')}</th>
-                <th className="px-5 py-3 font-semibold">{t('admin.orders')}</th>
-                <th className="px-5 py-3 text-right font-semibold">{t('admin.actions')}</th>
+              <tr className="border-b border-surface-muted text-left text-[11px] uppercase tracking-wide text-ink-muted">
+                <th className="px-4 py-2.5 font-semibold">{t('admin.name')}</th>
+                <th className="hidden px-4 py-2.5 font-semibold md:table-cell">{t('admin.role')}</th>
+                <th className="hidden px-4 py-2.5 font-semibold sm:table-cell">{t('admin.joined')}</th>
+                <th className="px-4 py-2.5 font-semibold">{t('admin.orders')}</th>
+                <th className="px-4 py-2.5 text-right font-semibold">{t('admin.actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-muted">
               {list.map((u) => (
                 <tr key={u.id} className="transition hover:bg-surface-soft">
-                  <td className="px-5 py-3">
+                  <td className="px-4 py-2.5">
                     <div className="flex items-center gap-3">
                       <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-surface-muted">
                         <Image src={u.avatar} alt={u.name} fill sizes="40px" className="object-cover" />
@@ -62,7 +62,7 @@ export default function AdminUsersPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="hidden px-5 py-3 md:table-cell">
+                  <td className="hidden px-4 py-2.5 md:table-cell">
                     <span
                       className={cn(
                         'inline-flex rounded-full px-2.5 py-1 text-xs font-semibold capitalize',
@@ -72,9 +72,9 @@ export default function AdminUsersPage() {
                       {u.role}
                     </span>
                   </td>
-                  <td className="hidden px-5 py-3 text-ink-muted sm:table-cell">{u.joined}</td>
-                  <td className="px-5 py-3 font-semibold text-ink">{u.orders}</td>
-                  <td className="px-5 py-3">
+                  <td className="hidden px-4 py-2.5 text-ink-muted sm:table-cell">{u.joined}</td>
+                  <td className="px-4 py-2.5 font-semibold text-ink">{u.orders}</td>
+                  <td className="px-4 py-2.5">
                     <div className="flex items-center justify-end gap-1">
                       <button className="grid h-8 w-8 place-items-center rounded-lg text-ink-muted transition hover:bg-surface-muted hover:text-brand-700">
                         <Mail size={15} />

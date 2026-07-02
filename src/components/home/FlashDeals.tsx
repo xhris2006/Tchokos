@@ -36,7 +36,7 @@ function useCountdown() {
 function TimeBox({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/15 text-lg font-bold tabular-nums text-white backdrop-blur sm:h-14 sm:w-14 sm:text-2xl">
+      <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/15 text-base font-bold tabular-nums text-white backdrop-blur sm:h-12 sm:w-12 sm:text-xl">
         {String(value).padStart(2, '0')}
       </div>
       <span className="mt-1 text-[10px] font-medium uppercase tracking-wide text-white/70">
@@ -70,7 +70,7 @@ export function FlashDeals() {
             <p className="mt-0.5 text-xs text-white/70">{t('home.flashDealDesc')}</p>
             <p className="mt-2 text-xs font-medium text-white/80">{t('home.specialPrice')}</p>
             <div className="flex items-center justify-center gap-2 sm:justify-start">
-              <span className="text-2xl font-extrabold text-white">
+              <span className="text-xl font-extrabold text-white">
                 {formatPrice(p.price)}
               </span>
               {p.compareAt && (

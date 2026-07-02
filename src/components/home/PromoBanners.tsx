@@ -26,7 +26,7 @@ function Promo({ title, desc, cta, href, image, tone }: PromoProps) {
       )}
     >
       <div className="relative z-10 flex max-w-[60%] flex-col text-white">
-        <h3 className="font-display text-xl font-bold leading-tight sm:text-2xl">
+        <h3 className="font-display text-lg font-bold leading-tight sm:text-xl">
           {title}
         </h3>
         <p className="mt-2 text-sm text-white/90">{desc}</p>

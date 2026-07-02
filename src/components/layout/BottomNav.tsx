@@ -22,8 +22,8 @@ export function BottomNav() {
   const links = [
     { href: '/', label: t('nav.home'), icon: Home },
     { href: '/shop', label: t('nav.categories'), icon: LayoutGrid },
-    { href: '/shop?sort=sale', label: t('nav.deals'), icon: Tag },
-    { href: '/shop', label: t('nav.wishlist'), icon: Heart, badge: true },
+    { href: '/deals', label: t('nav.deals'), icon: Tag },
+    { href: '/wishlist', label: t('nav.wishlist'), icon: Heart, badge: true },
   ]
 
   const itemClass =

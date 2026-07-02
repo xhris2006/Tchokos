@@ -122,7 +122,7 @@ export function Header() {
               </button>
 
               <Link
-                href="/shop"
+                href="/wishlist"
                 aria-label={t('nav.wishlist')}
                 className="relative grid h-9 w-9 place-items-center rounded-xl text-ink transition hover:bg-surface-muted"
               >
@@ -161,7 +161,7 @@ export function Header() {
           <nav className="hidden border-t border-surface-muted/70 lg:block">
             <div className="container-px flex h-10 items-center gap-6 text-[13px] font-medium text-ink-soft">
               <Link
-                href="/shop?sort=sale"
+                href="/deals"
                 className="flex items-center gap-1.5 font-semibold text-accent transition hover:text-accent/80"
               >
                 <Zap size={14} className="fill-accent" />

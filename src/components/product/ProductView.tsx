@@ -93,7 +93,7 @@ export function ProductView({ product }: { product: Product }) {
             {product.badge === 'new' && <Badge tone="new">{t('common.new')}</Badge>}
           </div>
 
-          <h1 className="mt-2 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h1 className="mt-2 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
             {product.name}
           </h1>
 
@@ -111,11 +111,11 @@ export function ProductView({ product }: { product: Product }) {
           </div>
 
           <div className="mt-4 flex items-end gap-3">
-            <span className="text-3xl font-extrabold text-ink">
+            <span className="text-2xl font-extrabold text-ink">
               {formatPrice(product.price)}
             </span>
             {product.compareAt && (
-              <span className="pb-1 text-lg text-ink-muted line-through">
+              <span className="pb-0.5 text-base text-ink-muted line-through">
                 {formatPrice(product.compareAt)}
               </span>
             )}
